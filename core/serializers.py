@@ -3,9 +3,17 @@ from rest_framework import serializers
 from core.models import NewsDetail, Image
 
 
+class ImageSerializer(serializers.ModelSerializer):
+    """Serializer for ordering and nested url Flutter"""
+
+    class Meta:
+        model = Image
+        fields = ('url',)
+
+
 class NewsCreateSerializer(serializers.ModelSerializer):
     """Serializer for create, update and delete news JS"""
-    image = serializers.URLField()
+    image = ImageSerializer(many=True)
     filter = serializers.CharField()
     lang = serializers.CharField()
 
@@ -30,13 +38,6 @@ class NewsMainListSerializer(serializers.ModelSerializer):
     class Meta:
         model = NewsDetail
         fields = ('title', 'logo')
-
-
-class ImageSerializer(serializers.ModelSerializer):
-    """Serializer for ordering and nested url Flutter"""
-    class Meta:
-        model = Image
-        fields = ('url', 'order_num')
 
 
 class NewsDetailFlutterSerializer(serializers.ModelSerializer):
