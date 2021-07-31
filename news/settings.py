@@ -27,6 +27,7 @@ SECRET_KEY = 'django-insecure--t_*w6sl2ppj@37r)(v&bz4xang%j1k8v#p=600@^14&n!o6fo
 DEBUG = True
 
 ALLOWED_HOSTS = ['hackatonnewsapp.herokuapp.com', '127.0.0.1']
+CORS_ORIGIN_ALLOW_ALL = True
 
 
 # Application definition
@@ -42,7 +43,8 @@ INSTALLED_APPS = [
     'core',
     'rest_framework',
     'drf_yasg',
-    'django_filters'
+    'django_filters',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -53,6 +55,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'news.urls'
