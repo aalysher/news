@@ -25,7 +25,7 @@ class NewsDetail(models.Model):
 
     @property
     def logo(self):
-        return Image.objects.filter(news_detail=self).first()
+        return Image.objects.filter(news_detail=self).first().url
 
 
 class Filter(models.Model):

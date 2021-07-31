@@ -3,12 +3,22 @@ from rest_framework import serializers
 from core.models import NewsDetail, Image
 
 
-class NewsDetailSerializer(serializers.ModelSerializer):
-    """Serializer CRUD for JS"""
+class NewsCreateSerializer(serializers.ModelSerializer):
+    image = serializers.URLField()
+    filter = serializers.CharField()
+    lang = serializers.CharField()
 
     class Meta:
         model = NewsDetail
         fields = "__all__"
+
+
+class NewsListSerializer(serializers.ModelSerializer):
+    logo = serializers.URLField()
+
+    class Meta:
+        model = NewsDetail
+        fields = ('title', 'logo', 'add_date')
 
 
 class NewsMainListSerializer(serializers.ModelSerializer):

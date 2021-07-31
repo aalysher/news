@@ -3,20 +3,25 @@ from rest_framework import generics
 from rest_framework.pagination import LimitOffsetPagination
 
 from .models import NewsDetail
-from .serializers import NewsDetailSerializer, NewsMainListSerializer, NewsDetailFlutterSerializer
+from .serializers import NewsCreateSerializer, NewsMainListSerializer, NewsDetailFlutterSerializer, NewsListSerializer
 
 
 class NewsList(generics.ListCreateAPIView):
     """List and create news(JS)"""
     queryset = NewsDetail.objects.all()
-    serializer_class = NewsDetailSerializer
     pagination_class = LimitOffsetPagination
+
+    def get_serializer_class(self):
+        if self.request.method == "GET":
+            return NewsListSerializer
+        elif self.request.method == "POST":
+            return NewsCreateSerializer
 
 
 class NewsAllDetail(generics.RetrieveUpdateDestroyAPIView):
     """Get, update and delete(JS)"""
     queryset = NewsDetail.objects.all()
-    serializer_class = NewsDetailSerializer
+    serializer_class = NewsCreateSerializer
 
 
 class NewsListFlutter(generics.ListAPIView):
