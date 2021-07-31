@@ -2,8 +2,9 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import generics
 from rest_framework.pagination import LimitOffsetPagination
 
-from .models import NewsDetail
-from .serializers import NewsCreateSerializer, NewsMainListSerializer, NewsDetailFlutterSerializer, NewsListSerializer
+from .models import NewsDetail, Filter, Lang
+from .serializers import NewsCreateSerializer, NewsMainListSerializer, NewsDetailFlutterSerializer, NewsListSerializer, \
+    CategorySerializer, LanguageSerializer
 
 
 class NewsList(generics.ListCreateAPIView):
@@ -35,3 +36,13 @@ class NewsListFlutter(generics.ListAPIView):
 class NewsDetailFlutter(generics.RetrieveAPIView):
     queryset = NewsDetail.objects.all()
     serializer_class = NewsDetailFlutterSerializer
+
+
+class CategoryList(generics.ListAPIView):
+    queryset = Filter.objects.all()
+    serializer_class = CategorySerializer
+
+
+class LanguageList(generics.ListAPIView):
+    queryset = Lang.objects.all()
+    serializer_class = LanguageSerializer

@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from core.models import NewsDetail, Image
+from core.models import NewsDetail, Image, Filter, Lang
 
 
 class ImageSerializer(serializers.ModelSerializer):
@@ -47,3 +47,19 @@ class NewsDetailFlutterSerializer(serializers.ModelSerializer):
     class Meta:
         model = NewsDetail
         fields = ('header_title', 'text', 'add_date', 'image')
+
+
+class CategorySerializer(serializers.ModelSerializer):
+    """Serializer for list category Flutter"""
+
+    class Meta:
+        model = Filter
+        fields = ("name",)
+
+
+class LanguageSerializer(serializers.ModelSerializer):
+    """Serializer for list language Flutter"""
+
+    class Meta:
+        model = Lang
+        fields = "__all__"
