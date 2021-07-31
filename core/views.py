@@ -25,12 +25,13 @@ class NewsAllDetail(generics.RetrieveUpdateDestroyAPIView):
 
 
 class NewsListFlutter(generics.ListAPIView):
+    """List all news with filters"""
     queryset = NewsDetail.objects.all()
     serializer_class = NewsMainListSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['filter', 'lang']
 
 
-class NewsDetailFlutter(generics.ListAPIView):
+class NewsDetailFlutter(generics.RetrieveAPIView):
     queryset = NewsDetail.objects.all()
     serializer_class = NewsDetailFlutterSerializer

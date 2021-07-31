@@ -10,6 +10,9 @@ class Image(models.Model):
     def __str__(self):
         return str(self.news_detail)
 
+    class Meta:
+        ordering = ['order_num']
+
 
 class NewsDetail(models.Model):
     title = models.CharField(max_length=255)
