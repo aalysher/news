@@ -67,7 +67,7 @@ class NewsMainListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = NewsDetail
-        fields = ('title', 'logo')
+        fields = ('id', 'title', 'logo')
 
 
 class NewsDetailFlutterSerializer(serializers.ModelSerializer):

@@ -39,9 +39,12 @@ class NewsDetailFlutter(generics.RetrieveAPIView):
 
 
 class CategoryList(generics.ListAPIView):
-    queryset = Filter.objects.all()
     serializer_class = CategorySerializer
 
+    def get_queryset(self):
+        lang = self.request.query_params.get('lang')
+        queryset = Filter.objects.filter(lang__name=lang)
+        return queryset
 
 class LanguageList(generics.ListAPIView):
     queryset = Lang.objects.all()
