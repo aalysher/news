@@ -35,6 +35,10 @@ class Filter(models.Model):
     name = models.CharField(max_length=255)
     lang = models.ForeignKey("Lang", on_delete=models.CASCADE)
     active = models.BooleanField(default=True)
+    order_num = models.IntegerField("Приоритет по фильтрации")
+
+    class Meta:
+        ordering = ['order_num', ]
 
     def __str__(self):
         return self.name
