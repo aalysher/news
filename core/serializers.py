@@ -86,7 +86,7 @@ class CategorySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Filter
-        fields = ("name",)
+        fields = ("id", "name",)
 
 
 class LanguageSerializer(serializers.ModelSerializer):
