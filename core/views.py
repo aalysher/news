@@ -46,6 +46,7 @@ class CategoryList(generics.ListAPIView):
         queryset = Filter.objects.filter(lang__name=lang)
         return queryset
 
+
 class LanguageList(generics.ListAPIView):
     queryset = Lang.objects.all()
     serializer_class = LanguageSerializer

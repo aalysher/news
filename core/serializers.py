@@ -64,10 +64,11 @@ class NewsListSerializer(serializers.ModelSerializer):
 class NewsMainListSerializer(serializers.ModelSerializer):
     """Serializer for Main menu Flutter"""
     logo = serializers.URLField()
+    filter = serializers.SlugRelatedField(slug_field='name', read_only=True)
 
     class Meta:
         model = NewsDetail
-        fields = ('id', 'title', 'logo')
+        fields = ('id', 'title', 'logo', 'filter')
 
 
 class NewsDetailFlutterSerializer(serializers.ModelSerializer):
