@@ -74,6 +74,7 @@ class NewsMainListSerializer(serializers.ModelSerializer):
 class NewsDetailFlutterSerializer(serializers.ModelSerializer):
     """Serializer for detail news Flutter"""
     image = ImageSerializer(many=True)
+    add_date = serializers.DateTimeField(format="%d.%m.%Y")
 
     class Meta:
         model = NewsDetail
